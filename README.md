@@ -27,3 +27,17 @@ You can check out the [create-t3-app GitHub repository](https://github.com/t3-os
 ## How do I deploy this?
 
 Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+
+## CI/CD
+
+GitHub Actions workflow `.github/workflows/deploy.yml` deploys automatically:
+
+- Push to `main` → staging deploy (wrangler `--env staging`).
+- Create tag `vX.Y.Z` → production deploy (wrangler `--env production`).
+
+Required GitHub secrets:
+
+- `CLOUDFLARE_ACCOUNT_ID`
+- `CLOUDFLARE_API_TOKEN` (with Workers + R2 permissions sufficient for deploy)
+
+Optional: add `staging` and `production` environments to `wrangler.jsonc` if you need different bindings (R2 bucket names, variables, etc.).

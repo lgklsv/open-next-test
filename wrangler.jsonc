@@ -18,5 +18,25 @@
 			// See https://developers.cloudflare.com/workers/wrangler/commands/#r2-bucket-create
 			"bucket_name": "open-next-test-cache"
 		}
-	]
+	],
+	"env": {
+		"staging": {
+			"name": "open-next-test-staging",
+			"r2_buckets": [
+				{
+					"binding": "NEXT_INC_CACHE_R2_BUCKET",
+					"bucket_name": "open-next-test-staging-cache"
+				}
+			]
+		},
+		"production": {
+			"name": "open-next-test",
+			"r2_buckets": [
+				{
+					"binding": "NEXT_INC_CACHE_R2_BUCKET",
+					"bucket_name": "open-next-test-cache"
+				}
+			]
+		}
+	}
 }
